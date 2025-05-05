@@ -18,7 +18,7 @@ void knapsack(int n, int W, int weights[], int values[]) {
             }
         }
     }
-    printf("The Table is:");
+    printf("The Table is:\n");
     for (int i = 0; i < n; i++)
     {
         for (int w = 0; w <= W;w++){
