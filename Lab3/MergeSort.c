@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <time.h>
-#include <stdlib.h> 
+#include <stdlib.h> /* To recognize exit function when compiling with gcc */
 
 void split(int[], int, int);
 void combine(int[], int, int, int);
