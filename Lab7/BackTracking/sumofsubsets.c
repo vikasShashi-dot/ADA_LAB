@@ -5,7 +5,7 @@ int set[20], subset[20];
 
 void sumOfSubsets(int index, int currSum, int subsetIndex) {
     if (currSum == target) {
-        // Print the current subset
+
         printf("{ ");
         for (int i = 0; i < subsetIndex; i++) {
             printf("%d ", subset[i]);
@@ -18,11 +18,9 @@ void sumOfSubsets(int index, int currSum, int subsetIndex) {
         return;
     }
 
-    // Include current element
     subset[subsetIndex] = set[index];
     sumOfSubsets(index + 1, currSum + set[index], subsetIndex + 1);
 
-    // Exclude current element
     sumOfSubsets(index + 1, currSum, subsetIndex);
 }
 
