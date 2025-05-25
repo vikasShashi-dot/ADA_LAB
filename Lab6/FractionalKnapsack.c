@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main()
 {
-    float weight[50], profit[50], ratio[50], Totalvalue, temp, capacity, amount;
+    float weight[50], profit[50], ratio[50], Totalvalue=0.0f, temp, capacity, amount;
     int n, i, j;
     printf("Enter the number of items :");
     scanf("%d", &n);

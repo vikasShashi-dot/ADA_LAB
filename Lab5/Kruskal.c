@@ -3,33 +3,33 @@
 int find(int v, int parent[10])
 {
     while (parent[v] != v)
-    {
         v = parent[v];
-    }
     return v;
 }
+
 void union1(int i, int j, int parent[10])
 {
     if (i < j)
-
         parent[j] = i;
     else
         parent[i] = j;
 }
+
 void kruskal(int n, int a[10][10])
 {
-    int count, k, min, sum, i, j, t[10][10], u, v, parent[10];
-    count = 0;
-    k = 0;
-    sum = 0;
-    for (i = 0; i < n; i++)
+    int count = 0, k = 0, sum = 0;
+    int t[10][2]; // Store MST edges
+    int u, v, parent[10];
+
+    for (int i = 0; i < n; i++)
         parent[i] = i;
-    while (count != n - 1)
+
+    while (count < n - 1)
     {
-        min = 999;
-        for (i = 0; i < n; i++)
+        int min = 999;
+        for (int i = 0; i < n; i++)
         {
-            for (j = 0; j < n; j++)
+            for (int j = 0; j < n; j++)
             {
                 if (a[i][j] < min && a[i][j] != 0)
                 {
@@ -39,8 +39,9 @@ void kruskal(int n, int a[10][10])
                 }
             }
         }
-        i = find(u, parent);
-        j = find(v, parent);
+
+        int i = find(u, parent);
+        int j = find(v, parent);
 
         if (i != j)
         {
@@ -49,33 +50,39 @@ void kruskal(int n, int a[10][10])
             t[k][1] = v;
             k++;
             count++;
-            sum = sum + a[u][v];
+            sum += a[u][v];
         }
+
         a[u][v] = a[v][u] = 999;
     }
+
     if (count == n - 1)
     {
-        printf("spanning tree\n");
-        for (i = 0; i < n - 1; i++)
-        {
-            printf("%d %d\n", t[i][0], t[i][1]);
-        }
-        printf("cost of spanning tree=%d\n", sum);
+        printf("Spanning tree edges:\n");
+        for (int i = 0; i < n - 1; i++)
+            printf("%d -- %d\n", t[i][0], t[i][1]);
+
+        printf("Total cost of spanning tree: %d\n", sum);
     }
     else
-        printf("spanning tree does not exist\n");
+    {
+        printf("Spanning tree does not exist\n");
+    }
 }
-void main()
+
+int main()
 {
-    int n, i, j, a[10][10];
-    clrscr();
-    printf("enter the number of nodes\n");
+    int n, a[10][10];
+
+    printf("Enter the number of nodes: ");
     scanf("%d", &n);
 
-    printf("enter the adjacency matrix\n");
-    for (i = 0; i < n; i++)
-        for (j = 0; j < n; j++)
+    printf("Enter the adjacency matrix:\n");
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
             scanf("%d", &a[i][j]);
+
     kruskal(n, a);
-    getch();
+
+    return 0;
 }
