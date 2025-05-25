@@ -24,6 +24,10 @@ void primMSTNoParent(int graph[V][V]) {
                 }
             }
         }
+        if (fromVertex == -1) {
+            printf("Graph is disconnected! No MST exists.\n");
+            return;
+        }
         fromEdge[edgeCount] = fromVertex;
         toEdge[edgeCount] = toVertex;
         edgeWeight[edgeCount] = minWeight;
