@@ -20,7 +20,7 @@ int getMobile(int a[], int dir[])
                 mobile = i;
     return isMobile(a, dir, mobile) ? mobile : -1;
 }
-// Swap elements and their directions
+
 void swap(int *x, int *y)
 {
     int temp = *x;
