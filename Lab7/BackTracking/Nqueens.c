@@ -2,19 +2,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define MAX 20
+#define N 4 
 
-int board[MAX];
-int N;
-
-void printSolution() {
+void printSolution(int board[N][N]) {
     for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            if (board[i] == j)
-                printf("Q ");
-            else
-                printf(". ");
-        }
+        for (int j = 0; j < N; j++)
+            printf("%c ", board[i][j] ? 'Q' : '.');
         printf("\n");
     }
     printf("\n");
@@ -53,16 +46,13 @@ bool solveNQUtil(int board[N][N], int col) {
     return res;
 }
 
+void solveNQ() {
+    int board[N][N] = {0};
+    if (!solveNQUtil(board, 0))
+        printf("Solution does not exist\n");
+}
+
 int main() {
-    printf("Enter the value of N: ");
-    scanf("%d", &N);
-
-    if (N < 1 || N > MAX) {
-        printf("Invalid value of N. Must be between 1 and %d.\n", MAX);
-        return 1;
-    }
-
-    solve(0);
-
+    solveNQ();
     return 0;
 }
